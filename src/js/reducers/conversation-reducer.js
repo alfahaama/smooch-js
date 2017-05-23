@@ -96,7 +96,6 @@ const cleanUpMessages = (messages) => {
 
     // removes duplicate messages and empty messages
     messages.forEach((message) => {
-<<<<<<< HEAD
         const messageText = (message.text && !!message.text.trim()) || (message.mediaUrl && !!message.mediaUrl.trim());
 
         let key = message._id ? message._id + message.role + message.mediaType
@@ -110,11 +109,6 @@ const cleanUpMessages = (messages) => {
         const hasContent = messageText || (message.actions && message.actions.filter(({type}) => !GLOBAL_ACTION_TYPES.includes(type)).length > 0);
 
         if (!(key in messagesHash) && hasContent) {
-=======
-        const key = message._id + message.role + message.mediaType;
-        const hasText = (message.text && !!message.text.trim()) || (message.mediaUrl && !!message.mediaUrl.trim());
-        if (!(key in messagesHash) && (hasText || (!hasText && message.actions && message.actions.length > 0)) ) {
->>>>>>> vendor in react-stripe-checkout, swap hostcontext
             messagesHash[key] = message;
             cleanedMessages.push(message);
         }
